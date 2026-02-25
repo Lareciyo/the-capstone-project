@@ -1,8 +1,8 @@
 import StatsCard from '@/components/features/dashboard/StatsCard';
+import AIInsights from '@/components/features/dashboard/AIInsights';
 import ProjectTable from '@/components/features/projects/ProjectTable';
 
 export default function DashboardPage() {
-  // 1. We must define the 'stats' array so line 21 (your line 15) can find it
   const stats = [
     { label: "Total Projects", value: "12", description: "Active this month", icon: "briefcase" },
     { label: "Completed", value: "8", description: "+2 from last week", icon: "check" },
@@ -17,15 +17,23 @@ export default function DashboardPage() {
         <p className="text-gray-500 text-sm mt-1">Real-time insights and project tracking.</p>
       </div>
       
-      {/* This grid uses the 'stats' array defined above */}
+      {/* Stats Cards Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
           <StatsCard key={s.label} {...s} />
         ))}
       </div>
 
-      <section>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Current Projects</h2>
+      <section className="space-y-6">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">Current Projects</h2>
+          <p className="text-gray-500 text-sm mt-1">Manage and track ongoing tasks.</p>
+        </div>
+
+        {/* AI Insights placed strategically above the data table */}
+        <AIInsights />
+
+        {/* The Searchable Table */}
         <ProjectTable />
       </section>
     </div>
